@@ -14,8 +14,8 @@ com\mycompany\projetoa3\prototipo\TelaFotoPerfil$1.class
 com\mycompany\projetoa3\prototipo\TelaCriarGrupo$1.class
 com\mycompany\projetoa3\prototipo\TelaCadastro$2.class
 com\mycompany\projetoa3\prototipo\TelaPerfil.class
+com\mycompany\DAO\ConnectionFactory.class
 com\mycompany\projetoa3\prototipo\TelaCadastro$4.class
-com\mycompany\projetoa3\prototipo\TelaEditarPerfil$4.class
 com\mycompany\projetoa3\prototipo\TelaLogin$1.class
 com\mycompany\projetoa3\prototipo\TelaPerfil$2.class
 com\mycompany\projetoa3\prototipo\ProjetoA3Prototipo.class

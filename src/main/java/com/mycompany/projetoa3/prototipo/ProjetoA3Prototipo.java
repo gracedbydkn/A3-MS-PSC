@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.projetoa3.prototipo;
 
-/**
- *
- * @author 824144932
- */
+import com.mycompany.DAO.ConnectionFactory;
+
 public class ProjetoA3Prototipo {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        ConnectionFactory cf = new ConnectionFactory();
+        cf.obtemConexao();
     }
 }
