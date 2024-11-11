@@ -27,6 +27,7 @@
                 <configuration>
                     <compilerArgs>
                         <arg>--enable-preview</arg>
+                        alkgankoga
                     </compilerArgs>
                 </configuration>
             </plugin>
