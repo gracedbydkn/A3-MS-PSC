@@ -39,7 +39,6 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
         txtNomeGrupo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtTema = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtSenhaGrupo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -52,8 +51,10 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
         txtCodGrupo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btLimpar = new javax.swing.JButton();
+        txtTema = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar grupos");
         getContentPane().setLayout(null);
 
         txtNomeGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -71,11 +72,6 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
         jLabel2.setText("Tema do grupo");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(70, 200, 100, 16);
-
-        txtTema.setToolTipText("");
-        txtTema.setName(""); // NOI18N
-        getContentPane().add(txtTema);
-        txtTema.setBounds(70, 220, 113, 26);
 
         jLabel4.setText("Senha do grupo");
         getContentPane().add(jLabel4);
@@ -101,7 +97,7 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
         getContentPane().add(txtPesquisar);
         txtPesquisar.setBounds(70, 70, 260, 26);
 
-        jLabel3.setText("Nome do grupo");
+        jLabel3.setText("Código do grupo");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(70, 50, 100, 16);
 
@@ -163,8 +159,11 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
         });
         getContentPane().add(btLimpar);
         btLimpar.setBounds(500, 70, 76, 27);
+        getContentPane().add(txtTema);
+        txtTema.setBounds(70, 220, 140, 26);
 
-        setBounds(0, 0, 821, 417);
+        setSize(new java.awt.Dimension(816, 608));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomeGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeGrupoActionPerformed
@@ -182,7 +181,7 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
         // TODO add your handling code here:
         String grupo = txtPesquisar.getText();
-        String sql = "SELECT * FROM tb_grupo WHERE nomegrupo = ?";
+            String sql = "SELECT * FROM tb_grupo WHERE nomegrupo = ?";
         ConnectionFactory cf = new ConnectionFactory();
         try (Connection conn = cf.obtemConexao();
             PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -255,41 +254,12 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
         String nomeGrupo = txtNomeGrupo.getText();
         String senhaGrupo = txtSenhaGrupo.getText();
         String temaGrupo = txtTema.getText();
-        String codGrupo = txtCodGrupo.getText();
-        Grupo grupo = new Grupo(nomeGrupo, senhaGrupo, temaGrupo);
         
         String sql = "INSERT INTO tb_grupo (nomegrupo, tema, senhagrupo) VALUES ( ? , ? , ? )";
         if (nomeGrupo.isEmpty() || senhaGrupo.isEmpty() || temaGrupo.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
             return;
         }
-        
-        try {
-            grupo.validaGrupo();
-            boolean existe = grupo.validaGrupo();
-            System.out.println("grupo ja existe?"+existe);
-            if (existe){
-                System.out.println("duplicado");
-            }
-            else
-                System.out.println("nao duplicado");
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        try {
-            if (grupo.validaGrupo()) {
-                JOptionPane.showMessageDialog(null, "Grupo duplicado! Altere o nome, tema ou senha!");
-                System.out.println("true");
-                return;
-            }
-            else
-                System.out.println("false");
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaAdminGrupo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         ConnectionFactory cf = new ConnectionFactory();
         try (Connection conn = cf.obtemConexao();
             PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -302,6 +272,7 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(null, "Nenhum grupo foi encontrado!");
          } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Nome do grupo duplicado! Altere o nome");
              ex.printStackTrace();
         }        
                

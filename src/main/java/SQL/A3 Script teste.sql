@@ -3,7 +3,7 @@ create database scholarpath;
 
 use scholarpath;
 create table tb_cadastro
-(	codigo int auto_increment primary key, 
+(   codigo int auto_increment primary key, 
     nomecompleto varchar(60) not null,
     nomeexibicao varchar(30) not null,
     aniversario varchar(8) not null,
@@ -13,8 +13,8 @@ create table tb_cadastro
 );
 
 create table tb_grupo
-(	codgrupo int auto_increment primary key,
-	nomegrupo varchar(30) not null,
+(   codgrupo int auto_increment primary key,
+    nomegrupo varchar(30) not null  UNIQUE,
     tema varchar(25) not null,
     senhagrupo varchar(10) not null
 );

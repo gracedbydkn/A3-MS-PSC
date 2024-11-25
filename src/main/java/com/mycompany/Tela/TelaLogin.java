@@ -36,11 +36,11 @@ public class TelaLogin extends javax.swing.JFrame {
         btLogin = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btSair = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        ckMostrarSenha = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -55,20 +55,25 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLogin);
-        btLogin.setBounds(453, 285, 82, 27);
+        btLogin.setBounds(300, 290, 82, 27);
 
         txtUsuario.setToolTipText("");
         getContentPane().add(txtUsuario);
-        txtUsuario.setBounds(312, 191, 164, 26);
+        txtUsuario.setBounds(312, 191, 170, 30);
 
-        txtSenha.setText("jPasswordFieldgdsgasgaesjajaa");
         txtSenha.setToolTipText("");
+        txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtSenhaFocusGained(evt);
+            }
+        });
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(312, 241, 164, 26);
-
-        jLabel2.setText("Não possui conta? Cadastre-se");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(312, 330, 170, 16);
+        txtSenha.setBounds(312, 241, 170, 30);
 
         jLabel1.setText("E-mail");
         getContentPane().add(jLabel1);
@@ -85,13 +90,27 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(562, 285, 76, 27);
+        btSair.setBounds(410, 290, 76, 27);
 
-        jLabel5.setText("logo");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(410, 70, 24, 16);
+        ckMostrarSenha.setText("Mostrar Senha");
+        ckMostrarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckMostrarSenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ckMostrarSenha);
+        ckMostrarSenha.setBounds(500, 240, 120, 20);
 
-        setSize(new java.awt.Dimension(821, 417));
+        jButton1.setText("Não possui conta? Cadastre-se");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(290, 330, 210, 27);
+
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,17 +125,17 @@ public class TelaLogin extends javax.swing.JFrame {
         usuario.setSenha(senha);
         try {
             usuario.ValidaUsu();
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
             if (usuario.ValidaUsu()) {
-                JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
-                TelaMenu tm = new TelaMenu();
-                tm.setVisible(true);
                 this.dispose();
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
+                boolean isAdmin = usuario.isAdmin();
+                if (isAdmin)
+                    new TelaAdminMenu().setVisible(true);
+                else
+                    new TelaMenu().setVisible(true);
             }
             else {
+                 System.out.println(usuario.ValidaUsu());
                 JOptionPane.showMessageDialog(null, "ERRO! Email ou senha inválidos");
             }
         } catch (SQLException ex) {
@@ -129,6 +148,29 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void txtSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaFocusGained
+
+    private void ckMostrarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckMostrarSenhaActionPerformed
+        // TODO add your handling code here:
+        if (ckMostrarSenha.isSelected())
+            txtSenha.setEchoChar((char)0);
+        else
+            txtSenha.setEchoChar('*');
+    }//GEN-LAST:event_ckMostrarSenhaActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        TelaCadastro tCadastro = new TelaCadastro();
+        tCadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,10 +210,10 @@ public class TelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
     private javax.swing.JButton btSair;
+    private javax.swing.JCheckBox ckMostrarSenha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;

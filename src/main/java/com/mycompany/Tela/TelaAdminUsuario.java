@@ -4,6 +4,15 @@
  */
 package com.mycompany.Tela;
 
+import com.mycompany.DAO.ConnectionFactory;
+import com.mycompany.Tela.TelaMenu;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 824144932
@@ -26,89 +35,110 @@ public class TelaAdminUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        txtPesquisar = new javax.swing.JTextField();
+        btPesquisar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txtAniversario = new javax.swing.JTextField();
+        txtNomeExibicao = new javax.swing.JTextField();
+        btEditar = new javax.swing.JButton();
+        btCadastrar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
+        ckAdmin = new javax.swing.JCheckBox();
+        btLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar usuários");
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtPesquisarActionPerformed(evt);
             }
         });
+        getContentPane().add(txtPesquisar);
+        txtPesquisar.setBounds(68, 59, 159, 26);
 
-        jButton1.setText("Pesquisar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btPesquisarActionPerformed(evt);
             }
         });
-
-        jPasswordField2.setText("jPasswordField1gsgsgshsgsgda");
+        getContentPane().add(btPesquisar);
+        btPesquisar.setBounds(259, 59, 84, 27);
 
         jLabel1.setText("Data de nascimento");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 229, 140, 16);
 
         jLabel2.setText("Nome completo");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(68, 117, 130, 16);
 
         jLabel3.setText("E-mail");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(70, 173, 70, 16);
 
         jLabel4.setText("Senha");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(70, 285, 70, 16);
 
-        jLabel6.setText("Escolaridade");
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
+        getContentPane().add(txtNome);
+        txtNome.setBounds(70, 139, 157, 26);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º Ano", "2º Ano", "3º Ano", "Ensino Superior", "Não especificado" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(70, 195, 155, 26);
 
         jLabel7.setText("Nome de exibição");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(290, 120, 140, 16);
+        getContentPane().add(txtAniversario);
+        txtAniversario.setBounds(70, 251, 80, 26);
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeExibicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtNomeExibicaoActionPerformed(evt);
             }
         });
+        getContentPane().add(txtNomeExibicao);
+        txtNomeExibicao.setBounds(290, 140, 149, 26);
 
-        jButton2.setText("Editar");
-
-        jButton3.setText("Cadastrar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btEditarActionPerformed(evt);
             }
         });
+        getContentPane().add(btEditar);
+        btEditar.setBounds(70, 359, 76, 27);
+
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btCadastrar);
+        btCadastrar.setBounds(175, 359, 84, 27);
 
         jButton4.setForeground(new java.awt.Color(255, 0, 0));
         jButton4.setText("Excluir usuário");
@@ -117,137 +147,171 @@ public class TelaAdminUsuario extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(298, 359, 111, 27);
 
-        jLabel5.setText("Nome de usuário");
+        jLabel5.setText("Código do usuário");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(68, 37, 140, 16);
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(70, 310, 180, 26);
 
-        jLabel8.setText("foto de perfil usuario");
+        ckAdmin.setText("Admin");
+        ckAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ckAdmin);
+        ckAdmin.setBounds(290, 180, 100, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField5)
-                                        .addComponent(jPasswordField2)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jButton3))
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel2))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4)
-                            .addComponent(jLabel6)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(358, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(133, 133, 133))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(27, 27, 27))
-        );
+        btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btLimpar);
+        btLimpar.setBounds(360, 60, 76, 27);
 
-        setSize(new java.awt.Dimension(821, 417));
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    
+    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtPesquisarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String codusuario = txtPesquisar.getText();
+        String sql = "SELECT * FROM tb_usuario WHERE codusuario = ?";
+        ConnectionFactory cf = new ConnectionFactory();
+        try (Connection conn = cf.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, codusuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String nomeCompleto = rs.getString("nomecompleto");
+                txtNome.setText(nomeCompleto);
+                String email = rs.getString("email");
+                txtEmail.setText(email);
+                String senha = rs.getString("senha");
+                txtSenha.setText(senha);
+                String aniversario = rs.getString("aniversario");
+                txtAniversario.setText(aniversario);
+                String nomeExibicao = rs.getString("nomeexibicao");
+                txtNomeExibicao.setText(nomeExibicao);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btPesquisarActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtNomeExibicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeExibicaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtNomeExibicaoActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        String nomeCompleto = txtNome.getText();
+        String nomeExibicao = txtNomeExibicao.getText();
+        String senha = txtSenha.getText();
+        String email = txtEmail.getText();
+        String aniversario = txtAniversario.getText();
+        String codusuario = txtPesquisar.getText();
+        boolean admin;
+        if (ckAdmin.isSelected())
+            admin = true;
+        else 
+            admin = false;
+        
+        String sql = "INSERT INTO tb_usuario (nomecompleto, nomeexibicao, senha, email, aniversario, adm) VALUES ( ? , ? , ? , ? , ? , ?)";
+        if (nomeCompleto.isEmpty() || nomeExibicao.isEmpty() || senha.isEmpty() || email.isEmpty() || aniversario.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
+            return;
+        }
+        ConnectionFactory cf = new ConnectionFactory();
+        try (Connection conn = cf.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nomeCompleto);
+            ps.setString(2, nomeExibicao);
+            ps.setString(3, senha);
+            ps.setString(4, email);
+            ps.setString(5, aniversario);
+            ps.setBoolean(6, admin);
+            int contInsert = ps.executeUpdate();
+            if (contInsert > 0)
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+        }  
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        TelaAdminExcluirUsuario tExcluirUsuario = new TelaAdminExcluirUsuario();
+        tExcluirUsuario.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        // TODO add your handling code here:
+        String nomeCompleto = txtNome.getText();
+        String nomeExibicao = txtNomeExibicao.getText();
+        String senha = txtSenha.getText();
+        String email = txtEmail.getText();
+        String aniversario = txtAniversario.getText();
+        String codusuario = txtPesquisar.getText();
+        
+        String sql = "UPDATE tb_usuario SET nomecompleto = ? , nomeexibicao = ? , senha = ? , email = ? , aniversario = ? WHERE codusuario =  ?";
+        if (nomeCompleto.isEmpty() || nomeExibicao.isEmpty() || senha.isEmpty() || email.isEmpty() || aniversario.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
+            return;
+        }
+        ConnectionFactory cf = new ConnectionFactory();
+        try (Connection conn = cf.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nomeCompleto);
+            ps.setString(2, nomeExibicao);
+            ps.setString(3, senha);
+            ps.setString(4, email);
+            ps.setString(5, aniversario);
+            ps.setString(6, codusuario);
+            int contUpdate = ps.executeUpdate();
+            if (contUpdate > 0)
+                JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
+            else
+                JOptionPane.showMessageDialog(null, "Nenhum usuário foi encontrado!");
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+        }  
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void ckAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckAdminActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        // TODO add your handling code here:
+        txtNome.setText("");
+        txtNomeExibicao.setText("");
+        txtSenha.setText("");
+        txtEmail.setText("");
+        txtSenha.setText("");
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,24 +350,23 @@ public class TelaAdminUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btPesquisar;
+    private javax.swing.JCheckBox ckAdmin;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField txtAniversario;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeExibicao;
+    private javax.swing.JTextField txtPesquisar;
+    private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

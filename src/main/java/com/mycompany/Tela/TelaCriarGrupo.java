@@ -36,7 +36,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtSenhaGrupo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btEnviarArquivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -48,15 +48,15 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeGrupo);
-        txtNomeGrupo.setBounds(94, 36, 255, 22);
+        txtNomeGrupo.setBounds(80, 80, 255, 22);
 
         jLabel1.setText("Nome do grupo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(94, 14, 85, 16);
+        jLabel1.setBounds(80, 60, 85, 16);
 
         jLabel2.setText("Tema do grupo");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(94, 85, 81, 16);
+        jLabel2.setBounds(80, 130, 81, 16);
 
         comboboxTemaGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tema", "Matemática", "Física", "Biologia", "Português", "Outro" }));
         comboboxTemaGrupo.addItemListener(new java.awt.event.ItemListener() {
@@ -83,8 +83,9 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboboxTemaGrupo);
-        comboboxTemaGrupo.setBounds(94, 113, 124, 22);
+        comboboxTemaGrupo.setBounds(80, 160, 124, 22);
 
+        txtTemaGrupo.setVisible(false);
         txtTemaGrupo.setToolTipText("");
         txtTemaGrupo.setName(""); // NOI18N
         txtTemaGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +94,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtTemaGrupo);
-        txtTemaGrupo.setBounds(236, 113, 113, 22);
+        txtTemaGrupo.setBounds(220, 160, 113, 22);
         txtTemaGrupo.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jLabel3);
@@ -101,7 +102,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
 
         jLabel4.setText("Senha do grupo");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(94, 153, 84, 16);
+        jLabel4.setBounds(80, 200, 84, 16);
 
         txtSenhaGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,17 +110,22 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSenhaGrupo);
-        txtSenhaGrupo.setBounds(94, 175, 139, 22);
+        txtSenhaGrupo.setBounds(80, 220, 139, 22);
 
         jLabel5.setText("foto do grupo (imagem)");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(595, 56, 129, 16);
 
-        jButton1.setText("enviar arquivo");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(595, 78, 105, 23);
+        btEnviarArquivo.setText("Enviar arquivo");
+        btEnviarArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEnviarArquivoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEnviarArquivo);
+        btEnviarArquivo.setBounds(595, 78, 105, 23);
 
-        setSize(new java.awt.Dimension(821, 417));
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -164,6 +170,12 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTemaGrupoActionPerformed
 
+    private void btEnviarArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarArquivoActionPerformed
+        // TODO add your handling code here:
+        TelaFotoGrupo tFotoGrupo = new TelaFotoGrupo();
+        tFotoGrupo.setVisible(true);
+    }//GEN-LAST:event_btEnviarArquivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,8 +212,8 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEnviarArquivo;
     private javax.swing.JComboBox<String> comboboxTemaGrupo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
