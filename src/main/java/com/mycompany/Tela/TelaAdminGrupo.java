@@ -260,7 +260,6 @@ public class TelaAdminGrupo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
             return;
         }
-
         ConnectionFactory cf = new ConnectionFactory();
         try (Connection conn = cf.obtemConexao();
             PreparedStatement ps = conn.prepareStatement(sql)) {
