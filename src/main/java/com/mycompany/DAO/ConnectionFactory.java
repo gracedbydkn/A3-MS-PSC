@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class ConnectionFactory {
     private String usuario = "root";
-    private String senha = "gutinho"; //Definir senha do banco de dados; Coloque a senha do seu root para testes
+    private String senha = "anima123"; //Definir senha do banco de dados; Coloque a senha do seu root para testes
     private String host = "localhost";
     private String porta = "3306";
     private String bd = "scholarpath";
