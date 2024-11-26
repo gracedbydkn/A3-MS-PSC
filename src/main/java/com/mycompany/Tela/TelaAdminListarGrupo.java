@@ -71,7 +71,7 @@ public class TelaAdminListarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(680, 550, 76, 27);
+        jButton2.setBounds(680, 540, 76, 27);
 
         jLabel1.setText("Digite o nome do grupo ou deixe em branco para listar todos os grupos existentes");
         getContentPane().add(jLabel1);
@@ -116,7 +116,7 @@ public class TelaAdminListarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(540, 550, 124, 27);
+        jButton3.setBounds(540, 540, 124, 27);
 
         setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);

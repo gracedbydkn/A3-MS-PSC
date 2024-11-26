@@ -20,6 +20,9 @@ public class TelaPerfil extends javax.swing.JFrame {
      */
     public TelaPerfil() {
         initComponents();
+        txtNome.setBackground(new java.awt.Color(0,0,0,1));
+        txtEmail.setBackground(new java.awt.Color(0,0,0,1));
+        txtAniversario.setBackground(new java.awt.Color(0,0,0,1));
     }
 
     /**
@@ -31,19 +34,12 @@ public class TelaPerfil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtAniversario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -54,81 +50,59 @@ public class TelaPerfil extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jTextField1.setEditable(false);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(113, 80, 164, 26);
+        txtNome.setEditable(false);
+        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNome.setForeground(new java.awt.Color(255, 255, 255));
+        txtNome.setBorder(null);
+        txtNome.setFocusable(false);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(120, 190, 200, 40);
 
-        jLabel1.setText("Nome de exibição");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(113, 52, 96, 16);
+        txtEmail.setEditable(false);
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmail.setBorder(null);
+        txtEmail.setFocusable(false);
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(120, 310, 200, 30);
 
-        jLabel2.setText("Foto de perfil (imagem)");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(487, 52, 125, 16);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(542, 108, 0, 0);
-
-        jLabel4.setText("E-mail");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(113, 126, 34, 16);
-
-        jTextField2.setEditable(false);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(113, 154, 164, 26);
-
-        jLabel5.setText("Data de nascimento");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(113, 194, 105, 16);
-
-        jTextField3.setEditable(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtAniversario.setEditable(false);
+        txtAniversario.setBorder(null);
+        txtAniversario.setFocusable(false);
+        txtAniversario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtAniversarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(113, 222, 164, 26);
+        getContentPane().add(txtAniversario);
+        txtAniversario.setBounds(120, 416, 200, 40);
 
-        jLabel6.setText("Horas totais");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(441, 126, 63, 16);
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(441, 154, 68, 26);
-
-        jLabel7.setText("Maior sequência");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(441, 194, 87, 16);
-
-        jLabel8.setText("  números");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(447, 203, 60, 41);
-
-        jButton1.setText("editar perfil");
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(127, 304, 94, 27);
+        jButton1.setBounds(290, 520, 170, 40);
+
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        getContentPane().add(jButton2);
+        jButton2.setBounds(510, 190, 100, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-23 at 15.31.48 (5).jpeg")); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-3, 2, 800, 600);
 
         setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtAniversarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAniversarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtAniversarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -180,17 +154,10 @@ public class TelaPerfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtAniversario;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,12 +28,9 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
     private void initComponents() {
 
         txtNomeGrupo = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         comboboxTemaGrupo = new javax.swing.JComboBox<>();
         txtTemaGrupo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         txtSenhaGrupo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btEnviarArquivo = new javax.swing.JButton();
@@ -48,15 +45,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeGrupo);
-        txtNomeGrupo.setBounds(80, 80, 255, 22);
-
-        jLabel1.setText("Nome do grupo");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 60, 85, 16);
-
-        jLabel2.setText("Tema do grupo");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(80, 130, 81, 16);
+        txtNomeGrupo.setBounds(110, 210, 255, 26);
 
         comboboxTemaGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tema", "Matemática", "Física", "Biologia", "Português", "Outro" }));
         comboboxTemaGrupo.addItemListener(new java.awt.event.ItemListener() {
@@ -83,7 +72,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboboxTemaGrupo);
-        comboboxTemaGrupo.setBounds(80, 160, 124, 22);
+        comboboxTemaGrupo.setBounds(130, 300, 200, 26);
 
         txtTemaGrupo.setVisible(false);
         txtTemaGrupo.setToolTipText("");
@@ -94,15 +83,11 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtTemaGrupo);
-        txtTemaGrupo.setBounds(220, 160, 113, 22);
+        txtTemaGrupo.setBounds(360, 300, 113, 26);
         txtTemaGrupo.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jLabel3);
         jLabel3.setBounds(355, 85, 0, 0);
-
-        jLabel4.setText("Senha do grupo");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 200, 84, 16);
 
         txtSenhaGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,11 +95,11 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSenhaGrupo);
-        txtSenhaGrupo.setBounds(80, 220, 139, 22);
+        txtSenhaGrupo.setBounds(130, 390, 139, 26);
 
-        jLabel5.setText("foto do grupo (imagem)");
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-23 at 15.31.48 (4).jpeg")); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(595, 56, 129, 16);
+        jLabel5.setBounds(-1, 0, 801, 600);
 
         btEnviarArquivo.setText("Enviar arquivo");
         btEnviarArquivo.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +108,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEnviarArquivo);
-        btEnviarArquivo.setBounds(595, 78, 105, 23);
+        btEnviarArquivo.setBounds(595, 78, 109, 27);
 
         setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
@@ -214,10 +199,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEnviarArquivo;
     private javax.swing.JComboBox<String> comboboxTemaGrupo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtNomeGrupo;
     private javax.swing.JTextField txtSenhaGrupo;

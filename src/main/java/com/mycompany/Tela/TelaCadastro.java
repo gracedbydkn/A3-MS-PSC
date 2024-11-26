@@ -6,9 +6,13 @@ package com.mycompany.Tela;
 
 import com.mycompany.DAO.ConnectionFactory;
 import java.awt.Color;
+import java.awt.FontFormatException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
@@ -23,6 +27,12 @@ public class TelaCadastro extends javax.swing.JFrame {
      */
     public TelaCadastro() {
         initComponents();
+        txtNomeCompleto.setBackground(new Color(0,0,0,1));
+        txtNomeExibicao.setBackground(new Color(0,0,0,1));
+        txtSenha.setBackground(new Color(0,0,0,1));
+        txtConfirmarSenha.setBackground(new Color(0,0,0,1));
+        txtEmail.setBackground(new Color(0,0,0,1));
+        txtAniversario.setBackground(new Color(0,0,0,1));
     }
 
     /**
@@ -56,6 +66,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
+        txtNomeCompleto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNomeCompleto.setBorder(null);
         txtNomeCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +74,9 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeCompleto);
-        txtNomeCompleto.setBounds(120, 116, 230, 30);
+        txtNomeCompleto.setBounds(120, 210, 230, 30);
 
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEmail.setBorder(null);
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,12 +84,14 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(120, 190, 230, 30);
+        txtEmail.setBounds(120, 280, 230, 30);
 
-        txtConfirmarSenha.setText("jPasswordField1gsgsgshsgsgda");
+        txtConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtConfirmarSenha.setBorder(null);
         getContentPane().add(txtConfirmarSenha);
-        txtConfirmarSenha.setBounds(120, 420, 220, 30);
+        txtConfirmarSenha.setBounds(470, 360, 220, 30);
 
+        txtNomeExibicao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNomeExibicao.setBorder(null);
         txtNomeExibicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,13 +99,14 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeExibicao);
-        txtNomeExibicao.setBounds(470, 110, 220, 30);
+        txtNomeExibicao.setBounds(470, 210, 220, 30);
 
-        txtSenha.setText("jPasswordField1gsgsgshsgsgda");
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSenha.setBorder(null);
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(120, 340, 230, 30);
+        txtSenha.setBounds(470, 280, 220, 30);
 
+        txtAniversario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtAniversario.setBorder(null);
         txtAniversario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,18 +114,19 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAniversario);
-        txtAniversario.setBounds(120, 260, 230, 30);
+        txtAniversario.setBounds(120, 360, 230, 30);
 
-        btCadastrar.setText("jButton1");
+        btCadastrar.setBorder(null);
+        btCadastrar.setContentAreaFilled(false);
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
             }
         });
         getContentPane().add(btCadastrar);
-        btCadastrar.setBounds(360, 500, 79, 27);
+        btCadastrar.setBounds(340, 470, 120, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-23 at 15.31.48 (2).jpeg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-25 at 21.26.01.jpeg")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
@@ -176,13 +192,23 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
          } catch (SQLException ex) {
              ex.printStackTrace();
+        } catch (FontFormatException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        this.dispose();
-        new TelaLogin().setVisible(true);
+        try {
+            // TODO add your handling code here:
+            this.dispose();
+            new TelaLogin().setVisible(true);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowClosing
 
     /**

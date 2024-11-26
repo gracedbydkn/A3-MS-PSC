@@ -275,8 +275,9 @@ public class TelaAdminUsuario extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String aniversario = txtAniversario.getText();
         String codusuario = txtPesquisar.getText();
+        boolean admin = ckAdmin.isSelected();
         
-        String sql = "UPDATE tb_usuario SET nomecompleto = ? , nomeexibicao = ? , senha = ? , email = ? , aniversario = ? WHERE codusuario =  ?";
+        String sql = "UPDATE tb_usuario SET nomecompleto = ? , nomeexibicao = ? , senha = ? , email = ? , aniversario = ? , adm = ? WHERE codusuario =  ?";
         if (nomeCompleto.isEmpty() || nomeExibicao.isEmpty() || senha.isEmpty() || email.isEmpty() || aniversario.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
             return;
@@ -289,7 +290,8 @@ public class TelaAdminUsuario extends javax.swing.JFrame {
             ps.setString(3, senha);
             ps.setString(4, email);
             ps.setString(5, aniversario);
-            ps.setString(6, codusuario);
+            ps.setBoolean(6, admin);
+            ps.setString(7, codusuario);
             int contUpdate = ps.executeUpdate();
             if (contUpdate > 0)
                 JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");

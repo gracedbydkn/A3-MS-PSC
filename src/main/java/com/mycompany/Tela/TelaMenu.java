@@ -35,7 +35,6 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btPerfil = new javax.swing.JButton();
         btGrupos = new javax.swing.JButton();
-        btAdmin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -44,32 +43,25 @@ public class TelaMenu extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        btPerfil.setText("Perfil");
+        btPerfil.setBorder(null);
+        btPerfil.setContentAreaFilled(false);
         btPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPerfilActionPerformed(evt);
             }
         });
         getContentPane().add(btPerfil);
-        btPerfil.setBounds(700, 440, 76, 27);
+        btPerfil.setBounds(676, 430, 130, 50);
 
-        btGrupos.setText("Grupos");
+        btGrupos.setBorder(null);
+        btGrupos.setContentAreaFilled(false);
         btGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btGruposActionPerformed(evt);
             }
         });
         getContentPane().add(btGrupos);
-        btGrupos.setBounds(440, 440, 76, 27);
-
-        btAdmin.setText("Admin");
-        btAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAdminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btAdmin);
-        btAdmin.setBounds(560, 520, 76, 27);
+        btGrupos.setBounds(410, 430, 130, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-23 at 15.31.48.jpeg")); // NOI18N
         jLabel2.setText("jLabel2");
@@ -87,12 +79,6 @@ public class TelaMenu extends javax.swing.JFrame {
         TelaPerfil tPerfil = new TelaPerfil();
         tPerfil.setVisible(true);
     }//GEN-LAST:event_btPerfilActionPerformed
-
-    private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed
-        // TODO add your handling code here:
-        TelaAdminMenu tAdminMenu = new TelaAdminMenu();
-        tAdminMenu.setVisible(true);
-    }//GEN-LAST:event_btAdminActionPerformed
 
     private void btGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGruposActionPerformed
         // TODO add your handling code here:
@@ -137,7 +123,6 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAdmin;
     private javax.swing.JButton btGrupos;
     private javax.swing.JButton btPerfil;
     private javax.swing.JLabel jLabel1;

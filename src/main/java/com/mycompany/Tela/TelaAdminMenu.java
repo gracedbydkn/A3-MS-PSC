@@ -15,6 +15,8 @@ public class TelaAdminMenu extends javax.swing.JFrame {
      */
     public TelaAdminMenu() {
         initComponents();
+        btGrupos.setBackground(new java.awt.Color(0,0,0,1));
+        btUsuarios.setBackground(new java.awt.Color(0,0,0,1));
     }
 
     /**
@@ -26,33 +28,40 @@ public class TelaAdminMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btGrupos = new javax.swing.JButton();
+        btUsuarios = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu admin");
         getContentPane().setLayout(null);
 
-        jButton1.setText("grupos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btGrupos.setBackground(new java.awt.Color(255, 255, 255));
+        btGrupos.setForeground(new java.awt.Color(255, 255, 255));
+        btGrupos.setBorder(null);
+        btGrupos.setBorderPainted(false);
+        btGrupos.setContentAreaFilled(false);
+        btGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btGruposActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(420, 440, 76, 27);
+        getContentPane().add(btGrupos);
+        btGrupos.setBounds(410, 430, 130, 50);
 
-        jButton2.setText("usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        btUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btUsuarios.setBorder(null);
+        btUsuarios.setContentAreaFilled(false);
+        btUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btUsuariosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(700, 440, 76, 27);
+        getContentPane().add(btUsuarios);
+        btUsuarios.setBounds(670, 430, 130, 50);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-23 at 15.31.48.jpeg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-25 at 19.40.21 (1).jpeg")); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 1200, 650);
@@ -60,19 +69,19 @@ public class TelaAdminMenu extends javax.swing.JFrame {
         setBounds(0, 0, 1216, 658);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGruposActionPerformed
         // TODO add your handling code here:
         TelaAdminListarGrupo tAdminListarGrupo = new TelaAdminListarGrupo();
         tAdminListarGrupo.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btGruposActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsuariosActionPerformed
         // TODO add your handling code here:
         TelaAdminListarUsuario tAdminListarUsuario = new TelaAdminListarUsuario();
         tAdminListarUsuario.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,8 +119,8 @@ public class TelaAdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btGrupos;
+    private javax.swing.JButton btUsuarios;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
