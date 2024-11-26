@@ -4,6 +4,18 @@
  */
 package com.mycompany.Tela;
 
+import com.mycompany.DAO.ConnectionFactory;
+import java.awt.Color;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 824144932
@@ -15,6 +27,12 @@ public class TelaCadastro extends javax.swing.JFrame {
      */
     public TelaCadastro() {
         initComponents();
+        txtNomeCompleto.setBackground(new Color(0,0,0,1));
+        txtNomeExibicao.setBackground(new Color(0,0,0,1));
+        txtSenha.setBackground(new Color(0,0,0,1));
+        txtConfirmarSenha.setBackground(new Color(0,0,0,1));
+        txtEmail.setBackground(new Color(0,0,0,1));
+        txtAniversario.setBackground(new Color(0,0,0,1));
     }
 
     /**
@@ -27,105 +45,171 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField7 = new javax.swing.JTextField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jTextField8 = new javax.swing.JTextField();
+        txtNomeCompleto = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtConfirmarSenha = new javax.swing.JPasswordField();
+        txtNomeExibicao = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JPasswordField();
+        txtAniversario = new javax.swing.JTextField();
+        btCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel8.setText("jLabel8");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(805, 409));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(805, 409));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeCompleto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNomeCompleto.setBorder(null);
+        txtNomeCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtNomeCompletoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(120, 116, 230, 30);
+        getContentPane().add(txtNomeCompleto);
+        txtNomeCompleto.setBounds(120, 210, 230, 30);
 
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEmail.setBorder(null);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(120, 170, 230, 30);
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(120, 280, 230, 30);
 
-        jPasswordField1.setText("jPasswordField1gsgsgshsgsgda");
-        getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(120, 330, 220, 30);
+        txtConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtConfirmarSenha.setBorder(null);
+        getContentPane().add(txtConfirmarSenha);
+        txtConfirmarSenha.setBounds(470, 360, 220, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º Ano", "2º Ano", "3º Ano", "Ensino Superior", "Não especificado" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeExibicao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNomeExibicao.setBorder(null);
+        txtNomeExibicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                txtNomeExibicaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(500, 120, 129, 26);
+        getContentPane().add(txtNomeExibicao);
+        txtNomeExibicao.setBounds(470, 210, 220, 30);
 
-        jTextField7.setBorder(null);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSenha.setBorder(null);
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(470, 280, 220, 30);
+
+        txtAniversario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtAniversario.setBorder(null);
+        txtAniversario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtAniversarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(490, 180, 149, 16);
+        getContentPane().add(txtAniversario);
+        txtAniversario.setBounds(120, 360, 230, 30);
 
-        jPasswordField2.setText("jPasswordField1gsgsgshsgsgda");
-        jPasswordField2.setBorder(null);
-        getContentPane().add(jPasswordField2);
-        jPasswordField2.setBounds(120, 280, 230, 30);
-
-        jTextField8.setBorder(null);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        btCadastrar.setBorder(null);
+        btCadastrar.setContentAreaFilled(false);
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                btCadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(120, 230, 230, 30);
+        getContentPane().add(btCadastrar);
+        btCadastrar.setBounds(340, 470, 120, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-11 at 19.30.00.jpeg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-25 at 21.26.01.jpeg")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 830, 790);
+        jLabel1.setBounds(0, 0, 800, 600);
 
-        setSize(new java.awt.Dimension(821, 417));
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtNomeCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCompletoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        txtNomeCompleto.setOpaque(false);
+        txtNomeCompleto.setBackground(new Color(0, 0, 0, 0));
+        txtNomeCompleto.setBorder(BorderFactory.createEmptyBorder());
+    }//GEN-LAST:event_txtNomeCompletoActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void txtNomeExibicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeExibicaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_txtNomeExibicaoActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtAniversarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAniversarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtAniversarioActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+        String nomeCompleto = txtNomeCompleto.getText();
+        String nomeExibicao = txtNomeExibicao.getText();
+        String senha = txtSenha.getText();
+        String confirmarSenha = txtConfirmarSenha.getText();
+        String email = txtEmail.getText();
+        String aniversario = txtAniversario.getText();
+        
+        String sql = "INSERT INTO tb_usuario (nomecompleto, nomeexibicao, senha, email, aniversario) VALUES ( ? , ? , ? , ? , ? )";
+        if (nomeCompleto.isEmpty() || nomeExibicao.isEmpty() || senha.isEmpty() || email.isEmpty() || aniversario.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
+            return;
+        }
+        
+        if (!senha.equals(confirmarSenha)) {
+            System.out.println(senha + " " + confirmarSenha);
+            JOptionPane.showMessageDialog(null, "Senhas diferentes! Por favor, insira a mesma senha nos campos 'senha' e 'confirmar senha'!");
+            return;
+        }
+        
+        ConnectionFactory cf = new ConnectionFactory();
+        try (Connection conn = cf.obtemConexao();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nomeCompleto);
+            ps.setString(2, nomeExibicao);
+            ps.setString(3, senha);
+            ps.setString(4, email);
+            ps.setString(5, aniversario);
+            int contInsert = ps.executeUpdate();
+            if (contInsert > 0) {
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+                TelaLogin tLogin = new TelaLogin();
+                tLogin.setVisible(true);
+                this.dispose();
+            }
+         } catch (SQLException ex) {
+             ex.printStackTrace();
+        } catch (FontFormatException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            // TODO add your handling code here:
+            this.dispose();
+            new TelaLogin().setVisible(true);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -163,14 +247,14 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btCadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField txtAniversario;
+    private javax.swing.JPasswordField txtConfirmarSenha;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNomeCompleto;
+    private javax.swing.JTextField txtNomeExibicao;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

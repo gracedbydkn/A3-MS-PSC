@@ -1,10 +1,16 @@
 package com.mycompany.classes;
 
 import com.mycompany.DAO.*;
+import com.mycompany.Tela.TelaAdminMenu;
+import com.mycompany.Tela.TelaLogin;
+import com.mycompany.Tela.TelaMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Usuario {
     private int codigo;
@@ -12,7 +18,7 @@ public class Usuario {
     private String usuario;
     private String senha;
     private String email;
-    private boolean tpUsuario;
+    private boolean admin = false;
 
     public Usuario() {
     }
@@ -22,21 +28,21 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Usuario(String nome, String usuario, String senha, String email, boolean tpUsuario) {
+    public Usuario(String nome, String usuario, String senha, String email, boolean admin) {
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
         this.email = email;
-        this.tpUsuario = tpUsuario;
+        this.admin = admin;
     }
     
-    public Usuario(int codigo, String nome, String usuario, String senha, String email, boolean tpUsuario) {
+    public Usuario(int codigo, String nome, String usuario, String senha, String email, boolean admin) {
         this.codigo = codigo;
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
         this.email = email;
-        this.tpUsuario = tpUsuario;
+        this.admin = admin;
     }
     
     public int getCodigo() {
@@ -79,16 +85,36 @@ public class Usuario {
         this.email = email;
     }
 
-    public boolean isTpUsuario() {
-        return tpUsuario;
+    public boolean isAdmin() {
+        return admin;
     }
 
-    public void setTpUsuario(boolean tpUsuario) {
-        this.tpUsuario = tpUsuario;
+    public void setAdmin(boolean Admin) {
+        this.admin = admin;
+    }
+    
+    public boolean ehAdmin() throws SQLException {
+        String sql = "SELECT adm FROM tb_usuario WHERE email = ? AND senha = ?";
+        ConnectionFactory cf = new ConnectionFactory();
+        boolean resultado = false;
+        try (Connection conn = cf.obtemConexao();
+             PreparedStatement ps = conn.prepareStatement(sql);)
+        {
+        ps.setString(1, getUsuario());
+        ps.setString(2, getSenha());
+        try (ResultSet rs = ps.executeQuery()) {
+           if (rs.next())
+               resultado = rs.getBoolean("adm");
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return resultado;
     }
     
     public boolean ValidaUsu() throws SQLException {
-        String sql = "SELECT * FROM tb_usuario WHERE usuario = ?" + "AND senhausu = ?";
+        String sql = "SELECT * FROM tb_usuario WHERE email = ? AND senha = ?";
         ConnectionFactory cf = new ConnectionFactory();
         try (Connection conn = cf.obtemConexao();
             PreparedStatement ps = conn.prepareStatement(sql);)
@@ -104,7 +130,5 @@ public class Usuario {
             return false;
         }
     }
-    
-    
-    
 }
+    

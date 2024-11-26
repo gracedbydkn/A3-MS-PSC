@@ -5,6 +5,13 @@
 package com.mycompany.Tela;
 
 import com.mycompany.classes.Usuario;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,8 +26,10 @@ public class TelaLogin extends javax.swing.JFrame {
     /**
      * Creates new form TelaLogin
      */
-    public TelaLogin() {
+    public TelaLogin() throws FontFormatException, IOException {
         initComponents();
+        txtEmail.setBackground(new Color(0,0,0,1));
+        txtSenha.setBackground(new Color(0,0,0,1));
     }
 
     /**
@@ -34,13 +43,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
-        txtUsuario = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btSair = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        ckMostrarSenha = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -48,75 +56,103 @@ public class TelaLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        btLogin.setText("Login");
+        btLogin.setBorder(null);
+        btLogin.setContentAreaFilled(false);
         btLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLoginActionPerformed(evt);
             }
         });
         getContentPane().add(btLogin);
-        btLogin.setBounds(453, 285, 82, 27);
+        btLogin.setBounds(290, 430, 90, 20);
 
-        txtUsuario.setToolTipText("");
-        getContentPane().add(txtUsuario);
-        txtUsuario.setBounds(312, 191, 164, 26);
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEmail.setToolTipText("");
+        txtEmail.setBorder(null);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(300, 290, 200, 30);
 
-        txtSenha.setText("jPasswordFieldgdsgasgaesjajaa");
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSenha.setToolTipText("");
+        txtSenha.setBorder(null);
+        txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtSenhaFocusGained(evt);
+            }
+        });
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(312, 241, 164, 26);
+        txtSenha.setBounds(300, 370, 200, 30);
 
-        jLabel2.setText("Não possui conta? Cadastre-se");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(312, 330, 170, 16);
-
-        jLabel1.setText("E-mail");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(312, 169, 34, 16);
-
-        jLabel4.setText("Senha");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(312, 223, 32, 16);
-
-        btSair.setText("Sair");
+        btSair.setBorder(null);
+        btSair.setContentAreaFilled(false);
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(562, 285, 76, 27);
+        btSair.setBounds(410, 430, 100, 20);
 
-        jLabel5.setText("logo");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(410, 70, 24, 16);
+        ckMostrarSenha.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        ckMostrarSenha.setForeground(new java.awt.Color(204, 204, 204));
+        ckMostrarSenha.setText("Mostrar Senha");
+        ckMostrarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckMostrarSenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ckMostrarSenha);
+        ckMostrarSenha.setBounds(520, 370, 160, 29);
 
-        setSize(new java.awt.Dimension(821, 417));
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(290, 470, 220, 20);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-25 at 22.08.08.jpeg")); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-3, -4, 800, 610);
+
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         // TODO add your handling code here:
-        String usu, senha;
-        usu = txtUsuario.getText();
+        String email, senha;
+        email = txtEmail.getText();
         senha = txtSenha.getText();
         
         Usuario usuario = new Usuario();
-        usuario.setUsuario(usu);
+        usuario.setUsuario(email);
         usuario.setSenha(senha);
         try {
             usuario.ValidaUsu();
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
             if (usuario.ValidaUsu()) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
-                TelaMenu tm = new TelaMenu();
-                tm.setVisible(true);
+                if (usuario.ehAdmin())
+                    new TelaAdminMenu().setVisible(true);
+                else
+                    new TelaMenu().setVisible(true);
                 this.dispose();
             }
             else {
+                 System.out.println(usuario.ValidaUsu());
                 JOptionPane.showMessageDialog(null, "ERRO! Email ou senha inválidos");
             }
         } catch (SQLException ex) {
@@ -129,6 +165,33 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void txtSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaFocusGained
+
+    private void ckMostrarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckMostrarSenhaActionPerformed
+        // TODO add your handling code here:
+        if (ckMostrarSenha.isSelected())
+            txtSenha.setEchoChar((char)0);
+        else
+            txtSenha.setEchoChar('*');
+    }//GEN-LAST:event_ckMostrarSenhaActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        TelaCadastro tCadastro = new TelaCadastro();
+        tCadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +223,13 @@ public class TelaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
+                try {
+                    new TelaLogin().setVisible(true);
+                } catch (FontFormatException ex) {
+                    Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -168,12 +237,11 @@ public class TelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
     private javax.swing.JButton btSair;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JCheckBox ckMostrarSenha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

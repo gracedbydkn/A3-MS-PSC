@@ -4,6 +4,11 @@
  */
 package com.mycompany.Tela;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  *
  * @author 824144932
@@ -16,7 +21,8 @@ public class TelaMenu extends javax.swing.JFrame {
     public TelaMenu() {
         initComponents();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +33,59 @@ public class TelaMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btPerfil = new javax.swing.JButton();
+        btGrupos = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-11 at 19.30.00 (1).jpeg")); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 810, 780);
+        btPerfil.setBorder(null);
+        btPerfil.setContentAreaFilled(false);
+        btPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPerfilActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btPerfil);
+        btPerfil.setBounds(676, 430, 130, 50);
 
-        setSize(new java.awt.Dimension(817, 417));
+        btGrupos.setBorder(null);
+        btGrupos.setContentAreaFilled(false);
+        btGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGruposActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btGrupos);
+        btGrupos.setBounds(410, 430, 130, 50);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\gutinho\\Downloads\\WhatsApp Image 2024-11-23 at 15.31.48.jpeg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1200, 650);
+
+        setSize(new java.awt.Dimension(1216, 658));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void btPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPerfilActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TelaPerfil tPerfil = new TelaPerfil();
+        tPerfil.setVisible(true);
+    }//GEN-LAST:event_btPerfilActionPerformed
+
+    private void btGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGruposActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TelaGrupos tGrupos = new TelaGrupos();
+        tGrupos.setVisible(true);
+    }//GEN-LAST:event_btGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,6 +123,9 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btGrupos;
+    private javax.swing.JButton btPerfil;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
